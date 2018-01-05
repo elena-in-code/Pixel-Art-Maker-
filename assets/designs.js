@@ -23,15 +23,19 @@ function makeGrid() {
 	var inputHeightValue = inputHeight.val();
 	var inputWidthValue = inputWidth.val();
 	//loop for rows:
-	for (var x = 0; x <= inputHeightValue; ++x ){
-		var row = $("<tr></tr>");
-		canvasOutput.append(row);
-		//loop for columns:
-		for (var y = 0; y <= inputWidthValue; ++y) {
-			var col = $("<td></td>");
-    		row.append(col);
-  		}
-	}
+	if ( inputHeightValue <= 30 && inputWidthValue <= 30 ) {
+		for (var x = 1; x <= inputHeightValue; ++x ){
+			var row = $("<tr></tr>");
+			canvasOutput.append(row);
+			//loop for columns:
+			for (var y = 1; y <= inputWidthValue; ++y) {
+				var col = $("<td></td>");
+	    		row.append(col);
+	  		}
+		}
+	}else{
+		alert("Hola! The limit it is 30 Height & Width ");
+	} 
 }
 
 //function clear grid:
@@ -40,6 +44,13 @@ function removeGrid() {
 }
 
 //function Draw on grid:
+//event delegation example:
+canvasOutput.on( 'click', 'td', function() { 
+	//get color:
+	var currentColor =  $("#colorPicker").val();
+	//apply color on click
+	$(this).css('background', currentColor);
+ });
 
 //Event on click of the reset button that will call the reset function:
 resetButton.click(function(evt) {
@@ -51,27 +62,5 @@ function reset() {
 	inputHeight.val(1);
 	inputWidth.val(1);
 	colorPicker.val("#000000");
+	removeGrid();
 }
-
-//**************************************************************************************************************
-// parent elements: one level above
-// child elements: one level below
-// sibling elements: in same level
-
-// CDN = Content Delivery Network
-
-// Selectors by tag name:
-// $('div');
-// Selectors by class name:
-// $('.container');
-// Selectors by id name:
-// $('#footer');
-
-// DOM transversal methods to move around the Dom:
-// $('.container').parent() => inmidiate parent element. only goes up 1 level.
-// $('.container').parents() => will go all the way to the top.
-// $('.container').child() => only goes down 1 level.
-// $('.container').find() => will go down more than one level.
-// $('.container').siblings() => that has same parent.
-
-
