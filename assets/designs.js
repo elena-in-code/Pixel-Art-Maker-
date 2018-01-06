@@ -21,17 +21,17 @@ submitButton.click(function(evt) {
 function makeGrid() {
 	removeGrid();
 	//Get values of size the inputs:
-	var inputHeightValue = inputHeight.val();
-	var inputWidthValue = inputWidth.val();
-	var cellSizeValue = cellSize.val();
+	let inputHeightValue = inputHeight.val();
+	let inputWidthValue = inputWidth.val();
+	let cellSizeValue = cellSize.val();
 	//loop for rows:
 	if ( inputHeightValue <= 30 && inputWidthValue <= 30 && cellSizeValue <=30 ) {
-		for (var x = 1; x <= inputHeightValue; ++x ){
-			var row = $("<tr></tr>");
+		for (let x = 1; x <= inputHeightValue; ++x ){
+			let row = $("<tr></tr>");
 			canvasOutput.append(row);
 			//loop for columns:
-			for (var y = 1; y <= inputWidthValue; ++y) {
-				var col = $("<td></td>");
+			for (let y = 1; y <= inputWidthValue; ++y) {
+				let col = $("<td></td>");
 	    		row.append(col);
 	  		}
 		}
@@ -54,7 +54,7 @@ function removeGrid() {
 //event delegation example:
 canvasOutput.on( 'click', 'td', function() { 
 	//get color:
-	var currentColor =  $("#colorPicker").val();
+	let currentColor =  $("#colorPicker").val();
 	//apply color on click
 	$(this).css('background', currentColor);
  });
