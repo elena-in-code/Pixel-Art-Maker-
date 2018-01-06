@@ -25,7 +25,7 @@ input[type="color"] {
 
 input[type="color"]:hover{
     box-shadow: 2px 5px 8px 0px rgba(0,0,0,.6);
-    transition: all 0.6s ease;
+    transition: all 0.4s ease;
     width: 10em;  
 }
 input[type="color"]::-webkit-color-swatch-wrapper {

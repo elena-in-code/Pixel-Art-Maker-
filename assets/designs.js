@@ -3,6 +3,7 @@ const colorPicker = $("#colorPicker");
 // Select size input
 const inputHeight = $("#input_height");
 const inputWidth = $("#input_width");
+const cellSize = $("#input_size");
 // Select submit button
 const submitButton= $("#input_submit");
 // Select reset button
@@ -22,8 +23,9 @@ function makeGrid() {
 	//Get values of size the inputs:
 	var inputHeightValue = inputHeight.val();
 	var inputWidthValue = inputWidth.val();
+	var cellSizeValue = cellSize.val();
 	//loop for rows:
-	if ( inputHeightValue <= 30 && inputWidthValue <= 30 ) {
+	if ( inputHeightValue <= 30 && inputWidthValue <= 30 && cellSizeValue <=30 ) {
 		for (var x = 1; x <= inputHeightValue; ++x ){
 			var row = $("<tr></tr>");
 			canvasOutput.append(row);
@@ -33,8 +35,13 @@ function makeGrid() {
 	    		row.append(col);
 	  		}
 		}
+		//change cell sizes with the input of the user
+		$('td').css('width', cellSizeValue);
+	    $('td').css('height', cellSizeValue);
+	    $('tr').css('width', cellSizeValue);
+	    $('tr').css('height', cellSizeValue);
 	}else{
-		alert("Hola! The limit it is 30 Height & Width ");
+		alert("Hola! The limit for Height, Width & Cell Size it is 30\nThank you 👍");
 	} 
 }
 
@@ -63,4 +70,9 @@ function reset() {
 	inputWidth.val(1);
 	colorPicker.val("#000000");
 	removeGrid();
+	$('h1').css("color", "#000000");
 }
+//Make h1 change color with the color picker
+colorPicker.change(function(){
+    $('h1').css("color", colorPicker.val()); 
+  });
